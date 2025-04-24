@@ -2,7 +2,7 @@ import pandas as pd
 from datasets import load_dataset
 
 
-def main():
+def run():
     # Загружаем датасет Spider 1.0 с HuggingFace
     dataset = load_dataset("xlangai/spider")
 
@@ -29,4 +29,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run()

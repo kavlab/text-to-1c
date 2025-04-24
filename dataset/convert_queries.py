@@ -44,7 +44,7 @@ def translate_query(
     return new_query
 
 
-def main():
+def run():
     # Читаем датасет
     df = pd.read_parquet("dataset/data/spider.parquet")
 
@@ -111,6 +111,7 @@ def main():
     tqdm.auto.tqdm.pandas()
 
     # Выполняем преобразование запросов
+    print("Конвертация SQL-запросов в запросы 1С")
     df["query_ru"] = df.progress_apply(
         lambda x: translate_query(
             x["query"],
@@ -129,4 +130,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run()
