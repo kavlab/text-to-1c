@@ -1,4 +1,5 @@
 import pandas as pd
+import tqdm.auto
 
 GOOGLE_TRANSLATOR = "google"
 DEEPL_TRANSLATOR = "deepl"
@@ -25,6 +26,8 @@ def translate_with_deepl(df: pd.DataFrame):
 def run(translator_type: str = None):
     df = pd.read_parquet("dataset/data/spider.parquet")
 
+    tqdm.auto.tqdm.pandas()
+
     if translator_type == GOOGLE_TRANSLATOR:
         print("Перевод вопросов пользователей")
         translate_with_google(df)
@@ -35,8 +38,11 @@ def run(translator_type: str = None):
         print("Не указан тип используемого переводчика")
         return
     
-    # Сохраняем вопросы на английском и русском языках
-    df[["question", "question_ru"]].to_csv("dataset/data/questions-ru.csv", sep=";")
+    # Сохраняем вопросы на английском и русском языках для ручной проверки
+    df[["question", "question_ru"]].to_csv(
+        f"dataset/data/questions-ru-{translator_type}.csv",
+        sep=";"
+    )
 
     df.to_parquet("dataset/data/spider.parquet")
 
