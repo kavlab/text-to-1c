@@ -15,7 +15,7 @@ convert_queries.run()
 filter_exec_queries.run()
 
 # Перевод вопросов пользователей с английского языка на русский
-translate_questions.run(translate_questions.GOOGLE_TRANSLATOR)
+translate_questions.run(translate_questions.DEEPL_TRANSLATOR)
 
 # Формирования финального датасета, который будет использоваться для обучения моделей
 create_final_dataset.run()

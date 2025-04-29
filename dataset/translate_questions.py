@@ -48,4 +48,4 @@ def run(translator_type: str = None):
 
 
 if __name__ == "__main__":
-    run()
+    run(DEEPL_TRANSLATOR)
