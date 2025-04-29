@@ -1,0 +1,10 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - OLLAMA_SERVER_URL=${OLLAMA_SERVER_URL}
+      - OLLAMA_MODEL_NAME=${OLLAMA_MODEL_NAME}
