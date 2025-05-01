@@ -42,9 +42,9 @@ def run(translator_type: str = None):
         questions_file
     ):
         print(f"Загружаем готовые переводы из {questions_file}")
-        cache_df = pd.read_csv(questions_file, sep=";")
+        cache_df = pd.read_csv(questions_file, sep=";", index_col=0)
         # Объединяем столбец question_ru из кеша по индексу
-        df = df.join(cache_df[['question_ru']], how='left')
+        df['question_ru'] = cache_df['question_ru']
     else:
         # Если файл не найден или не указан тип переводчика
         if translator_type == GOOGLE_TRANSLATOR:
